@@ -19,12 +19,12 @@ const Header = () => {
         <div className="header main">
             <div>
                 <Link to={"/"} className="link">
-                    Hire It Online
+                   Lost&Found
                 </Link>
             </div>
             <div className="main">
                 {!user.id &&
-                    <div>
+                    <div className='reight'>
                         <Link to={"/registration"} className="link">
                             SignUp
                         </Link>
@@ -34,12 +34,12 @@ const Header = () => {
                     </div>
                 }
                 {user.id &&
-                    <div>
-                        <Link to={"#"} onClick={logoutHandle} className="link">
-                            LogOut
-                        </Link>
+                    <div className='left'>
                         <Link to={"/profile"} className="link">
                             My profile
+                        </Link>
+                        <Link to={"#"} onClick={logoutHandle} className="link">
+                            LogOut
                         </Link>
                     </div>
 

@@ -1,14 +1,17 @@
 import React from "react";
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import * as Yup from 'yup';
 import {Formik, Form, Field, ErrorMessage} from 'formik';
-import {registerUser} from "../../store/actions";
+import {cleanLoginErrors, registerUser} from "../../store/actions";
 import {registrationInitialValues} from "../../store/initialState";
 import {phoneRegExp} from "../../../../utils/validations";
 import {RegistrationFormValues} from "../../store/types";
 import '../style.scss';
+import {signUpErrorsSelector} from "../../store/selectors";
+import ErrorPopup from "../../../../libs/ui/components/modals/ErrorPopup";
 
 const required = 'This field is required';
+
 const RegisterValidationSchema = () =>
     Yup.object({
         email: Yup.string().email().required(required).label('Email'),
@@ -24,15 +27,21 @@ const RegisterValidationSchema = () =>
     });
 
 const SignUp = () => {
+
     const dispatch = useDispatch();
 
+    const errors = useSelector(signUpErrorsSelector);
+
+
+
     const submitHandle = (values: RegistrationFormValues) => {
-        const form = values;
-        console.log(form)
-        dispatch(registerUser(form));
+
+        console.log(errors)
+        dispatch(registerUser(values));
     };
 
     return (
+        
         <div className = "signUp">
             <h1>Let's get started</h1>
             <p className="mb-3">Register to Lost&Found!</p>
@@ -103,6 +112,10 @@ const SignUp = () => {
                     </Form>
                 )}
             </Formik>
+            <ErrorPopup 
+                errors = {errors}
+                clean = {cleanLoginErrors}
+            />
         </div>
     );
 }

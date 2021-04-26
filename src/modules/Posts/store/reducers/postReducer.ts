@@ -34,10 +34,10 @@ export default (state: Products = ProductsInitialValues, { type, payload }: Acti
         case UPDATE_POST:
             return {
                 ...state,
-                list: state.list.map((product: any) =>{
-                   if (product.id == payload.id )
-                   product = payload
-                   return product
+                list: state.list.map((post: any) =>{
+                   if (post.id == payload.id )
+                   post = payload
+                   return post
                 } )
             };
         case UPDATE_SELECTED_POST:

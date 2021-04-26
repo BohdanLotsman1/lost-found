@@ -1,14 +1,16 @@
 .header {
     display: flex;
-    min-height: 5vh;
+    height: 40px;
     justify-content: space-around;
     align-items: center;
     border: 1px solid lightgray;
     color: grey;
 
+    font-size: larger;
+
     .link {
-        margin-left: 20px;
-        margin-right: 20px;
+        //margin-left: 20px;
+        margin-right: 30px;
     }
 
     a {

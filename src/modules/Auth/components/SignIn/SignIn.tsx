@@ -6,11 +6,11 @@ import { loginUser, cleanLoginErrors } from "../../store/actions";
 import {loginInitialValues} from "../../store/initialState";
 import { LoginFormValues } from "../../store/types";
 import '../style.scss';
-import {errorsSelector} from "../../store/selectors";
+import { signInErrorsSelector } from "../../store/selectors";
 import ErrorPopup from "../../../../libs/ui/components/modals/ErrorPopup";
 
 const SignIn = () => {
-    const errors = useSelector(errorsSelector);
+    const errors = useSelector(signInErrorsSelector);
     const dispatch = useDispatch();
     const required = 'This field is required';
     const LoginValidationSchema = () =>
@@ -36,7 +36,7 @@ const SignIn = () => {
                     <Form className="form">
 
                         <div className="mb-1">
-                            <span>What's your email?</span>
+                            <span>Email</span>
                             <Field
                                 name="email"
                                 placeholder="Email"
@@ -47,7 +47,7 @@ const SignIn = () => {
                         </div>
 
                         <div className="mb-1">
-                            <span>Enter the password?</span>
+                            <span>Password</span>
                             <Field
                                 name="password"
                                 placeholder="Password"

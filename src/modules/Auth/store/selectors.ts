@@ -1,3 +1,5 @@
 import {State} from "../../../libs/utils/store/reducers";
 
-export const errorsSelector = (state: State) => state.auth.signIn.errors;
+export const signInErrorsSelector = (state: State) => state.auth.signIn.errors;
+
+export const signUpErrorsSelector = (state: State) => state.auth.signUp.errors;

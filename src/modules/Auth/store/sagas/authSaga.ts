@@ -4,11 +4,14 @@ import {AuthService, RegisterService} from "../../services";
 import {loginUserError, loginUserSuccess, registerUserError, registerUserSuccess} from '../actions';
 import { setUser } from '../../../User/store/actions/';
 import { logoutUserError, logoutUserSuccess } from "../actions/logoutActions";
+import { PostsService } from "../../../Posts/services";
+import { setPosts } from "../../../Posts/store/actions";
+import ErrorPopup from "../../../../libs/ui/components/modals/ErrorPopup";
 
 
 const registerService = RegisterService.getInstance();
 const authService = AuthService.getInstance();
-
+const postService = PostsService.getInstance();
 
 export function* logining({ payload }: Actions) {
     try {
@@ -22,6 +25,11 @@ export function* logining({ payload }: Actions) {
             yield put(loginUserSuccess()); 
             
             yield put(setUser(data));
+
+            
+            let {list} = yield call(postService.getAllPosts);
+
+            yield put(setPosts(list))
 
         }     
         else yield put(loginUserError([data.message.message]));
@@ -46,9 +54,14 @@ export function* logout({}: Actions) {
 
 export function* registering({ payload }: Actions) {
     try {
-        yield call(registerService.register, payload);
-        window.location.href = `${authService.APP_URL}/login`;
-        yield put(registerUserSuccess());
+        const {data} = yield call(registerService.register, payload);
+        if(data.message == undefined){
+            window.location.href = `${authService.APP_URL}/login`;
+            yield put(registerUserSuccess());
+        }
+        else{
+            yield put(registerUserError([data.message]));
+        }
     } catch (error) {
         yield put(registerUserError(error.response.data.errors));
     }

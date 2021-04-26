@@ -11,7 +11,6 @@ import './style.scss';
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import ErrorPopup from "../../../../libs/ui/components/modals/ErrorPopup";
 import { cleanLoginErrors } from "../../../Auth/store/actions";
-import { errorsSelector } from "../../../Auth/store/selectors";
 
 const PersonalInfo = () => {
   const dispatch = useDispatch();
@@ -26,8 +25,6 @@ const PersonalInfo = () => {
       phone: Yup.string().matches(phoneRegExp, 'Phone number is not valid').label('Phone'),
     });
   };
-
-  const errors = useSelector(errorsSelector);
 
   const submitHandle = (values: any) => {
 
@@ -118,10 +115,10 @@ const PersonalInfo = () => {
           <ChangePassword  
             setModalPass={setModalPass}
           />
-          <ErrorPopup 
+          {/* <ErrorPopup 
                 errors = {errors}
                 clean = {cleanLoginErrors}
-          />
+          /> */}
       </ModalForm>
     </div >
   );

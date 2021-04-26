@@ -12,7 +12,7 @@ const ErrorPopup = ({errors, clean}: any) => {
     const renderError = () => {
         if (errors.length) {
             setTimeout(cleanErrors, 3000);
-
+console.log( errors[0])
             return (
                 <div className="error-container" onClick={cleanErrors}>
                     <i className="fa fa-exclamation-circle"></i>
