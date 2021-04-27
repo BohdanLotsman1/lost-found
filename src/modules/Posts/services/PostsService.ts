@@ -16,8 +16,9 @@ export class PostsService extends BaseApiService {
         return PostsService._instance;
     }
 
-    getAllPosts = (): Promise<AxiosResponse> => {
-        return this.get(`${this.API_ROUTE}/post/all`);
+    getPosts = (payload:any): Promise<AxiosResponse> => {
+        console.log(payload.payload)
+        return this.get(`${this.API_ROUTE}/post?page=${payload.payload}`);
     };
 
     getUsersPosts = (id:string): Promise<AxiosResponse> => {

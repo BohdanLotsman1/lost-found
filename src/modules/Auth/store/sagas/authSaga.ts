@@ -27,15 +27,16 @@ export function* logining({ payload }: Actions) {
             yield put(setUser(data));
 
             
-            let {list} = yield call(postService.getAllPosts);
-
-            yield put(setPosts(list))
+            let {postData} = yield call(postService.getPosts,1);
+            if(postData !== undefined)
+            yield put(setPosts(postData))
 
         }     
         else yield put(loginUserError([data.message.message]));
 
     } 
     catch (error) {
+        console.log(error)
         yield put(loginUserError([error.response.data.message]));
     }
 }
@@ -43,6 +44,7 @@ export function* logining({ payload }: Actions) {
 export function* logout({}: Actions) {
     try {
         const {data} = yield call(authService.getLogout);
+        console.log('here')
         authService.logout();
         yield put(logoutUserSuccess());
         window.location.href = `${authService.APP_URL}/login`;

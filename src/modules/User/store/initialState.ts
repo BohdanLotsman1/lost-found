@@ -1,9 +1,7 @@
 import {User} from "../../../libs/utils/store/types";
 import { 
     changePasswordValues,
-    CreateFormValues,
     GetAllUsersInStore,
-    ProductFormValues
 } from "./types";
 
 export const UserInitialValues: User = {
@@ -18,16 +16,6 @@ export const UserInitialValues: User = {
 export const AllUsersInitialValues: GetAllUsersInStore = {
     allUsers:[],
 };
-
-export const initialPostValues: ProductFormValues = {
-    name:'',
-    description:'',
-    price_per_hour:0,
-    image:'',
-    type:'',
-    min_hire_hours:1,
-    max_hire_hours:2
-}
 
 export const changePasswordInitialValues: changePasswordValues = {
 

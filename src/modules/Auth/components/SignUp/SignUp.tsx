@@ -112,6 +112,7 @@ const SignUp = () => {
                     </Form>
                 )}
             </Formik>
+            
             <ErrorPopup 
                 errors = {errors}
                 clean = {cleanLoginErrors}

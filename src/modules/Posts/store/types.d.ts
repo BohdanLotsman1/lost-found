@@ -1,8 +1,9 @@
-export interface Products {
+export interface Posts {
     list: any[]
+    pages:number
 }
 
-export interface GetProductsInStore {
+export interface GetPostsInStore {
     list: any[];
 }
 
@@ -17,12 +18,24 @@ export interface UpdatePostValues {
     contact_face?:string,
 }
 
-export interface SelectedProduct {
+export interface PostFormValues{
+    id?:string,
+    header?:string,
+    description?:string,
+    user_id?:string,
+    image?:any,
+    place?:string,
+    phone?:string,
+    email?:string,
+    contact_face?:string,
+};
+
+export interface SelectedPost {
     post: any;
 }
 
 
 
-export interface SelectedProductInStore {
+export interface SelectedPostInStore {
     post: any;
 }

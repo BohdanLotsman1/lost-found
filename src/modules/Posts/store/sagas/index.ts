@@ -18,10 +18,10 @@ import {
 
 export default function* productsWatch(): SagaIterator {
     yield all([
-        takeEvery(GET_POSTS, gettingPosts),
         takeEvery(GET_USERS_POSTS, gettingCustomerPosts),
         takeEvery(DELETE_POST, deletingPost),
         takeEvery(CREATE_POST, creatingPost),
         takeEvery(UPDATE_POST, updatingPost),
+        takeEvery(GET_POSTS, gettingPosts),
     ]);
 }

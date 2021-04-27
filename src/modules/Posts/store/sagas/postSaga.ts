@@ -3,13 +3,19 @@ import {call, put} from 'redux-saga/effects';
 import {PostsService} from "../../services";
 import {addNewPost, setPosts, updateSelectedPosts} from "../actions";
 
-const postService = new PostsService
+const postService = new PostsService()
 
-export function* gettingPosts() {
+export function* gettingPosts(payload:any) {
     try {
-        const {list} = yield call(postService.getAllPosts);
-        if(list)
-        yield put(setPosts(list));
+        if(payload==undefined){
+            payload = 1
+        }
+        const {postData} = yield call(postService.getPosts,payload);
+        if(postData){
+            console.log(postData)
+            yield put(setPosts(postData));
+        }
+        
 
     }catch(e){
         console.log(e)
@@ -18,9 +24,9 @@ export function* gettingPosts() {
 
 export function* gettingCustomerPosts({payload}: Actions) {
     try {
-        const {products} = yield call(postService.getUsersPosts,payload);
-        if(products)
-        yield put(setPosts(products));
+        const {posts} = yield call(postService.getUsersPosts,payload);
+        if(posts)
+        yield put(setPosts(posts));
 
     }catch(e){
         console.log(e)

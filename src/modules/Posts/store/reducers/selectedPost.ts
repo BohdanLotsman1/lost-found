@@ -1,9 +1,9 @@
 import { Actions } from '../../../../libs/utils/store/types';
 import {SELECTED_POST,CLEAR_SELECTED_POST} from "../actionTypes";
-import {SelectedProductInStore} from "../types";
-import { selectedProductInitialValues } from "../initialState";
+import {SelectedPostInStore} from "../types";
+import { selectedPostInitialValues } from "../initialState";
 
-export default (state: SelectedProductInStore = selectedProductInitialValues, { type, payload }: Actions): SelectedProductInStore => {
+export default (state: SelectedPostInStore = selectedPostInitialValues, { type, payload }: Actions): SelectedPostInStore => {
     switch (type) {
         case SELECTED_POST:
             return {

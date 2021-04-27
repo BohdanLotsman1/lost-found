@@ -11,8 +11,9 @@ import {
 } from "../actionTypes";
 import {Actions, PayloadAction} from "../../../../libs/utils/store/types";
 
-export const getPosts = (): PayloadAction<any>  => ({
+export const getPosts = (payload:number): PayloadAction<any>  => ({
     type: GET_POSTS,
+    payload
 });
 
 export const getUsersPosts = (payload:any): PayloadAction<any>  => ({

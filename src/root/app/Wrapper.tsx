@@ -9,6 +9,7 @@ import { getUserSelector } from "../../modules/User/store/selectors";
 import {JWT_LOCALSTORAGE_KEY} from "../../libs/utils/constants";
 import {getUser} from "../../modules/User/store/actions";
 import './style.scss';
+import AdvertisementPage from "../../modules/pages/Advertisement/AdvertisementPage";
 
 const Wrapper = () => {
     const dispatch = useDispatch();
@@ -26,6 +27,7 @@ const Wrapper = () => {
             <div className="wrapper">
                 <Switch>
                     <Route exact path="/" component={MainPage} />
+                    <Route exact path="/advertisement" component={AdvertisementPage} />
                     <Route exact path="/profile" component={ Profile } />
                     {!user.id &&
                     <Switch>

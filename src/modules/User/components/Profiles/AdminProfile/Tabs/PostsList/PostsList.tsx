@@ -1,13 +1,10 @@
 import React, { useState } from 'react'
-import { Button, Input, Select, Table } from 'antd'
+import { Button, Input, Pagination, Select, Table } from 'antd'
 import { useDispatch, useSelector } from 'react-redux';
-import {  deletePost} from "../../../../../../Posts/store/actions";
-import { getListWithAllUsersSelector } from '../../../../../store/selectors';
-import { selectPost } from '../../../../../../Posts/store/actions';
-
+import {  deletePost, getPosts} from "../../../../../../Posts/store/actions";
 import './style.scss';
 import moment from 'moment';
-import { fetchPostsSelector } from '../../../../../../Posts/store/selectors';
+import { fetchPostsSelector, PostPages } from '../../../../../../Posts/store/selectors';
 
 const { Option } = Select;
 
@@ -17,6 +14,7 @@ const PostsList = ()=>{
 
   const {list} = useSelector(fetchPostsSelector);
   const [searchValue, setSearchValue] = useState<string>('');
+  const pages = useSelector(PostPages);
 
   let filteredList = list;
 
@@ -36,7 +34,13 @@ const PostsList = ()=>{
     {
       title: 'Description',
       dataIndex: 'description',
-      className: 'table-column-2'
+     
+      render: (_: any, record:any) =>
+      list.length >= 1 ? (
+        <div className= 'table-column-2'>
+          {record.description}
+        </div>
+    ) : null,
     },
     {
       title: 'Email',
@@ -49,6 +53,17 @@ const PostsList = ()=>{
       dataIndex: 'phone',
       editable: true,
       className: 'table-column-1'
+    },
+    {
+      title: 'Image',
+      dataIndex: 'image',
+      render: (_: any, record:any) =>
+      list.length >= 1 ? (
+        record.image !== undefined && record.image !== '' &&
+        <div  style={{textAlign:'center'}}>
+          <img style={{width:100,height:100}} className='img-product' src={`${process.env.REACT_APP_API_HOST}/${record.image}`}/>
+          </div>
+    ) : null,
     },
     {
       title: 'Place',
@@ -81,6 +96,9 @@ const PostsList = ()=>{
       },
   ];
   
+  const onchange = (e:any)=>{
+    dispatch(getPosts(e))
+  }
   
   return(
     <div className="PostList">
@@ -95,8 +113,14 @@ const PostsList = ()=>{
         dataSource={searchValue ? filteredList : list}
         columns={columns}
         rowKey='id'
+        pagination={false}
       />
-
+         <div className="main-page">
+            <Pagination
+            onChange={onchange}
+            total={pages}
+            defaultPageSize={1}/>
+        </div>
     </div>
   )
 }

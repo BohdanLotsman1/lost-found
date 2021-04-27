@@ -18,7 +18,7 @@ const Admin = () => {
 
   useEffect(()=>{
     dispatch(fetchAllUsers())
-    dispatch(getPosts())
+    dispatch(getPosts(1))
   },[])
 
   return(

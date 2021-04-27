@@ -8,10 +8,10 @@ import {
     UPDATE_SELECTED_POST,
     GET_USERS_POSTS
 } from "../actionTypes";
-import {Products} from "../types";
-import { ProductsInitialValues } from "../initialState";
+import {Posts} from "../types";
+import { PostsInitialValues } from "../initialState";
 
-export default (state: Products = ProductsInitialValues, { type, payload }: Actions): Products => {
+export default (state: Posts = PostsInitialValues, { type, payload }: Actions): Posts => {
     switch (type) {
         case GET_POSTS:
             return {
@@ -22,9 +22,11 @@ export default (state: Products = ProductsInitialValues, { type, payload }: Acti
                 ...state,
             };
         case SET_POSTS:
+            console.log(payload)
             return {
                 ...state,
-                list: payload,
+                list: payload.list,
+                pages:payload.pages
             };
         case ADD_NEW_POST:
             return {

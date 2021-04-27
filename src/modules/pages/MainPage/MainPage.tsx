@@ -15,10 +15,9 @@ const MainPage = () => {
         if(!token) token = localStorage.getItem(JWT_LOCALSTORAGE_KEY);
     }, [token]);
 
-   const onchange = (e:any)=>{
+    const onchange = (e:any)=>{
 
     console.log(e)
-
    }
 
     return (

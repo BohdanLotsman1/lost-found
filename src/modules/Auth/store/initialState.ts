@@ -8,15 +8,6 @@ export const registrationInitialValues: RegistrationFormValues = {
     password_confirmation: '',
 };
 
-export const productInitialValues: any = {
-    name: '',
-    description: '',
-    image: '',
-    price_per_hour: 0,
-    min_hire_hour: 0,
-    max_hire_hour: 0,
-};
-
 export const loginInitialValues: LoginFormValues = {
     email: '',
     password: '',

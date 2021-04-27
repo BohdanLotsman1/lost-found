@@ -9,14 +9,18 @@ import ModalForm from "../../../../libs/ui/components/modals/Modal";
 import ChangePassword from "../ChangePassword/ChangePassword";
 import './style.scss';
 import { ErrorMessage, Field, Form, Formik } from "formik";
-import ErrorPopup from "../../../../libs/ui/components/modals/ErrorPopup";
-import { cleanLoginErrors } from "../../../Auth/store/actions";
+import { logoutUser } from "../../../Auth/store/actions/logoutActions";
+import { Link } from "react-router-dom";
 
 const PersonalInfo = () => {
   const dispatch = useDispatch();
   const user = useSelector(getUserSelector);
   const [modalPass, setModalPass] = useState<boolean>(false)
   const required = 'This field is required';
+
+  const logoutHandle = () => {
+    dispatch(logoutUser());
+}
 
   const ProfileValidationSchema = () => {
     return Yup.object({
@@ -42,8 +46,13 @@ const PersonalInfo = () => {
   
   return (
     <div className="personal-info">
-      <div className="title mb-1">
-        Personal Info:
+      <div className ="head">
+        <div className="title mb-1">
+          Personal Info:
+        </div>
+        <Link to={"#"} onClick={logoutHandle} className="link">
+          LogOut
+        </Link>
       </div>
 
       <Formik 
@@ -115,10 +124,6 @@ const PersonalInfo = () => {
           <ChangePassword  
             setModalPass={setModalPass}
           />
-          {/* <ErrorPopup 
-                errors = {errors}
-                clean = {cleanLoginErrors}
-          /> */}
       </ModalForm>
     </div >
   );

@@ -1,9 +1,21 @@
-import {Products, SelectedProduct} from "./types";
+import {Posts, SelectedPost, PostFormValues} from "./types";
 
-export const ProductsInitialValues: Products = {
+export const PostsInitialValues: Posts = {
     list: [],
+    pages:0,
 };
 
-export const selectedProductInitialValues: SelectedProduct = {
+export const selectedPostInitialValues: SelectedPost = {
     post: {},
+};
+
+export const createPostInitialValues: PostFormValues = {
+        header:'',
+        description:'',
+        user_id:'',
+        image:'',
+        place:'',
+        phone:'',
+        email:'',
+        contact_face:'',
 };

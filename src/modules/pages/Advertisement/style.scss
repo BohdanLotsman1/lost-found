@@ -1,0 +1,43 @@
+.ad-page{
+    margin-top: 30px;
+    width: 1200px;
+
+    .create{
+        font-size: 40px;
+        margin-bottom: 40px
+    }
+
+    .descInput{
+        height: 200px;
+    }
+    .image{
+        color: gray;
+        button{
+            color: wheat;
+        }
+    }
+    .headerProd{
+        width: 30%;
+        font-size: large;
+        margin-bottom: 10px;
+    }
+    margin-bottom: 40px;
+
+    .submitBtn{
+       
+        display: flex;
+        justify-content: flex-end;
+       .submit{
+        height: 50px;
+        margin-top: 30px;
+        width: 30%;
+       }
+    }
+
+    .block{
+        font-size: large;
+        border: 1px solid gray;
+        margin-bottom: 20px;
+        padding: 30px;
+    }
+}
