@@ -1,20 +1,22 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Button, Input, Pagination, Select, Table } from 'antd'
 import { useDispatch, useSelector } from 'react-redux';
-import {  deletePost, getPosts} from "../../../../../../Posts/store/actions";
 import './style.scss';
 import moment from 'moment';
-import { fetchPostsSelector, PostPages } from '../../../../../../Posts/store/selectors';
+import { fetchPostsSelector } from '../../../../../Posts/store/selectors';
+import { getUserSelector } from '../../../../store/selectors';
+import { deletePost, getUsersPosts } from '../../../../../Posts/store/actions';
+
 
 const { Option } = Select;
 
-const PostsList = ()=>{
+const CustomerPostsList = ()=>{
 
   const dispatch = useDispatch();
+  const {list} = useSelector(fetchPostsSelector)
 
-  const {list} = useSelector(fetchPostsSelector);
+
   const [searchValue, setSearchValue] = useState<string>('');
-  const pages = useSelector(PostPages);
 
   let filteredList = list;
 
@@ -96,10 +98,6 @@ const PostsList = ()=>{
       },
   ];
   
-  const onchange = (e:any)=>{
-    dispatch(getPosts(e))
-  }
-  
   return(
     <div className="PostList">
       <Table
@@ -107,14 +105,9 @@ const PostsList = ()=>{
         dataSource={searchValue ? filteredList : list}
         columns={columns}
         rowKey='id'
-        pagination={false}
-      />
-      <Pagination
-        onChange={onchange}
-        total={pages*10}
       />
     </div>
   )
 }
 
-export default PostsList
+export default CustomerPostsList

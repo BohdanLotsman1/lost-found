@@ -10,6 +10,7 @@ import {JWT_LOCALSTORAGE_KEY} from "../../libs/utils/constants";
 import {getUser} from "../../modules/User/store/actions";
 import './style.scss';
 import AdvertisementPage from "../../modules/pages/Advertisement/AdvertisementPage";
+import PostInfo from "../../modules/pages/PostInfo/PostInfo";
 
 const Wrapper = () => {
     const dispatch = useDispatch();
@@ -29,6 +30,7 @@ const Wrapper = () => {
                     <Route exact path="/" component={MainPage} />
                     <Route exact path="/advertisement" component={AdvertisementPage} />
                     <Route exact path="/profile" component={ Profile } />
+                    <Route exact path="/post" component={PostInfo} />
                     {!user.id &&
                     <Switch>
                         <Route exact path="/login" component={SignIn} />

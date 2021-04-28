@@ -40,6 +40,7 @@ const AdvertisementPage = () => {
         values.user_id = user.id;
 
         dispatch(createPost(values))
+        window.location.href='/'
     }
 
     return ( 

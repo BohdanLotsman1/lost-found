@@ -10,7 +10,7 @@ import {
     UPDATE_USER,
     UPDATE_USER_INFO,
     FETCH_ALL_USERS,
-    GET_ALL_USERS,
+    SET_ALL_USERS,
     DELETE_USER,
     UPDATE_USER_PASSWORD
 } from "../actionTypes";
@@ -21,11 +21,6 @@ export const getUser = (): Actions => ({
 
 export const setUsersFranchises = (payload: any): PayloadAction<string[]> => ({
     type: SET_USERS_FRANCHISE,
-    payload
-});
-
-export const getUsersFranchises = (payload: any): PayloadAction<string[]> => ({
-    type: GET_USERS_FRANCHISE,
     payload
 });
 
@@ -57,12 +52,13 @@ export const updateUserInfo = (payload: any): PayloadAction<string[]> => ({
     payload,
 });
 
-export const fetchAllUsers = (): Actions => ({
+export const fetchAllUsers = (payload:any): Actions => ({
     type: FETCH_ALL_USERS,
+    payload
 });
 
 export const getAllUsers = (payload: any): PayloadAction<string[]> => ({
-    type: GET_ALL_USERS,
+    type: SET_ALL_USERS,
     payload
 });
 

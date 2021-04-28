@@ -1,31 +1,19 @@
 import React, {useState} from 'react';
-import { Button, Input, Select, Table } from 'antd';
+import { Button, Input, Pagination, Select, Table } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
-import { getListWithAllUsersSelector, getUserSelector } from '../../../../../store/selectors';
-import { deleteUser } from '../../../../../store/actions';
+import { getListWithAllUsersSelector, getUserSelector, pagesAllUsersSelector } from '../../../../../store/selectors';
+import { deleteUser,fetchAllUsers } from '../../../../../store/actions';
 import moment from 'moment';
-import './style.scss';
-
-const { Option } = Select;
 
 const UserList = ()=>{
 
   const dispatch = useDispatch();
   const [searchValue, setSearchValue] = useState<string>('');
   const {allUsers} = useSelector(getListWithAllUsersSelector);
+  const pages = useSelector(pagesAllUsersSelector)
   const user = useSelector(getUserSelector);
   const list = allUsers.filter(item => item.id !== user.id);
 
-  let filteredList = list
-
-  if(list.length > 0){
-    filteredList = list.filter((user) => user.first_name === searchValue 
-    || user.last_name === searchValue
-    || user.email === searchValue
-    || user.phone === searchValue
-    || user.name === searchValue
-    );
-  }
   
   let columns = [
       {
@@ -69,19 +57,24 @@ const UserList = ()=>{
       },
     ];
 
+    const onChange = (e:any) =>{
+      dispatch(fetchAllUsers(e))
+    }
   return(
       <div className="UserList">
-        <div className="Head">
-          <Input onPressEnter={(e: any)=>setSearchValue(e.target.value)} className = 'search-user-bar' placeholder = 'Search user...' />
-        </div>
         <Table
             className = 'table'
             rowClassName={() => 'editable-row'}
             bordered
-            dataSource={searchValue ? filteredList : list}
+            dataSource={list}
             columns={columns}
             rowKey='id'
+            pagination={false}
         />
+        <Pagination
+        onChange={onChange}
+        total={pages*10}
+      />
   </div>
   )
 

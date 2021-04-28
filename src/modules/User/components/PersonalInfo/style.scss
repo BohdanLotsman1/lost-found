@@ -1,8 +1,11 @@
 .personal-info {
     margin-bottom: 5px;
-    padding: 1rem;
+    padding: 20px;
     width: 1000px;
+    border: none;
+    background-color: white;
 
+    border-radius: 3px;
     .submit{
         min-height:30px ;
     }
@@ -53,7 +56,9 @@
     }
 
 }
-
+.profile{
+    border: none;
+}
 .mb-1 {
     margin-bottom: 1rem;
 }

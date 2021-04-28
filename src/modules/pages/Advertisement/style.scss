@@ -3,6 +3,8 @@
     width: 1200px;
 
     .create{
+        color: brown;
+        font-weight: bold;
         font-size: 40px;
         margin-bottom: 40px
     }
@@ -24,7 +26,11 @@
     margin-bottom: 40px;
 
     .submitBtn{
-       
+      
+        button{
+            background-color: white;
+        }
+
         display: flex;
         justify-content: flex-end;
        .submit{
@@ -36,8 +42,15 @@
 
     .block{
         font-size: large;
+        background-color: white;
         border: 1px solid gray;
         margin-bottom: 20px;
         padding: 30px;
     }
+}
+body{
+    background-image: url('../../../img/107895-kirpichnaya_kladka-kirpich-uzor-zamok-naklejka_na_stenu-3840x2160.jpg');
+}
+.main{
+    background-color: white;
 }

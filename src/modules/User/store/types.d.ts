@@ -10,6 +10,7 @@ export interface GetUserInStore {
 
 export interface GetAllUsersInStore{
     allUsers:any[],
+    pages:number
 }
 
 

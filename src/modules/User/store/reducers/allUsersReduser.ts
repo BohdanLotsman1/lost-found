@@ -1,15 +1,16 @@
 import { Actions } from '../../../../libs/utils/store/types';
-import {DELETE_USER, GET_ALL_USERS, UPDATE_USER_PASSWORD} from "../actionTypes";
+import {DELETE_USER, SET_ALL_USERS, UPDATE_USER_PASSWORD} from "../actionTypes";
 import {GetAllUsersInStore} from "../types";
 import {AllUsersInitialValues} from "../initialState";
 
 
 export default (state: GetAllUsersInStore = AllUsersInitialValues, { type, payload }: Actions): GetAllUsersInStore => {
     switch (type) {
-        case GET_ALL_USERS:
+        case SET_ALL_USERS:
             return {
                 ...state,
-                allUsers: payload,
+                allUsers: payload.list,
+                pages:payload.pages
             };
         case UPDATE_USER_PASSWORD: 
             return {

@@ -23,9 +23,13 @@ export function* getAuthUser({}: Actions) {
     }
 }
 
-export function* fetchAllUsers({}: Actions) {
+export function* fetchAllUsers({payload}: Actions) {
+    console.log(payload)
 
-    const {data} = yield call(userService.getAllUsers);
+    if(payload == undefined)
+    payload=1
+
+    const {data} = yield call(userService.getAllUsers,payload);
     yield put(getAllUsers(data))
 }
 

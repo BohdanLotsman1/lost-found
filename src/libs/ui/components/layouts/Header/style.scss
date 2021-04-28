@@ -1,10 +1,10 @@
 .header {
+    background-color: transparent!important;
     display: flex;
     height: 40px;
     justify-content: space-between;
     align-items: center;
-    border: 1px solid lightgray;
-    color: grey;
+    color: white;
 
     font-size: large;
     .siteName{
@@ -13,19 +13,23 @@
     .right{
         display: flex;
         flex-direction: row;
+        background-color: transparent!important;
         margin-right: 50px;
     }
+    font-size: 30px;
 
     .link {
         //margin-left: 20px;
         display: flex;
         margin-right: 30px;
+        font-weight: bold;
+        color:rgb(189, 49, 7);
     }
 
     .ad{
-        border:1px solid gray;
         text-align: center;
         justify-content: center;
+       
         margin-right: 25px;
         border-radius: 5px;
         display: flex;
@@ -46,6 +50,8 @@
     
     .main {
         display: flex;
+        background-color: transparent!important;
+        color: white;
     }  
     
 }

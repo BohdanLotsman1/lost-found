@@ -15,6 +15,7 @@ export const UserInitialValues: User = {
 };
 export const AllUsersInitialValues: GetAllUsersInStore = {
     allUsers:[],
+    pages:1
 };
 
 export const changePasswordInitialValues: changePasswordValues = {

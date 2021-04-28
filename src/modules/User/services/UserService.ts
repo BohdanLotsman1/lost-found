@@ -21,8 +21,9 @@ export class UserService extends BaseApiService {
         return this.get(`${this.API_ROUTE}/auth`);
     }
 
-    getAllUsers = (): Promise<AxiosResponse> =>{
-        return this.get(`${this.API_ROUTE}/user/all`);
+    getAllUsers = (payload:number): Promise<AxiosResponse> =>{
+        console.log(payload)
+        return this.get(`${this.API_ROUTE}/user/all?page=${payload}`);
     }
     
     deleteUser = (id: string): Promise<AxiosResponse> => {
