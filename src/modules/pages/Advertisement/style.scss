@@ -3,14 +3,16 @@
     width: 1200px;
 
     .create{
-        color: brown;
+        color: rgb(0, 0, 0);
         font-weight: bold;
         font-size: 40px;
         margin-bottom: 40px
     }
 
-    .descInput{
-        height: 200px;
+    .description{
+        .input{
+            height: 200px!important;
+        }
     }
     .image{
         color: gray;
@@ -49,7 +51,8 @@
     }
 }
 body{
-    background-image: url('../../../img/107895-kirpichnaya_kladka-kirpich-uzor-zamok-naklejka_na_stenu-3840x2160.jpg');
+    background-size: cover;
+    background-image: url('../../../img/belyy-kirpich-stena-iz-kirpicha.jpg');
 }
 .main{
     background-color: white;

@@ -22,7 +22,7 @@ const CustomerProfile = () => {
   return (
     <div className="profile">
        <Tabs defaultActiveKey="1" tabPosition="left" >
-        <TabPane tab="Users" key="1">
+        <TabPane tab="Posts" key="1">
           <CustomerPostsList/>
         </TabPane>
         <TabPane tab="Personal info" key="2">

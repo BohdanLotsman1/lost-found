@@ -1,6 +1,6 @@
 import { Actions} from "../../../../libs/utils/store/types";
 import { call, put } from 'redux-saga/effects';
-import {setUser, getUserError, setUsersFranchises, getAllUsers, updateUserInfo, updateUser} from "../actions";
+import {setUser, getUserError, getAllUsers, updateUser} from "../actions";
 import {UserService} from "../../services";
 
 const userService = UserService.getInstance();
@@ -24,7 +24,6 @@ export function* getAuthUser({}: Actions) {
 }
 
 export function* fetchAllUsers({payload}: Actions) {
-    console.log(payload)
 
     if(payload == undefined)
     payload=1
@@ -58,11 +57,8 @@ export function* updatingUserPassword({ payload }: Actions) {
         const {data} = yield call(userService.updUserPassword, payload.id, payload);
         if(data.message === 'Success') {
             alert(data.message);
-            console.log(data.message)
-        }
-        if(data.message !== 'Success') {
+        }else {
             alert(data.message);
-            console.log(data.message)
         }
     }catch(e){
         console.log(e)

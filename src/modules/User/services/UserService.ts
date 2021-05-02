@@ -22,7 +22,6 @@ export class UserService extends BaseApiService {
     }
 
     getAllUsers = (payload:number): Promise<AxiosResponse> =>{
-        console.log(payload)
         return this.get(`${this.API_ROUTE}/user/all?page=${payload}`);
     }
     

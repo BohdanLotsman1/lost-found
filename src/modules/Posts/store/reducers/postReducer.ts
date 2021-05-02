@@ -6,7 +6,8 @@ import {
     SET_POSTS,
     UPDATE_POST,
     UPDATE_SELECTED_POST,
-    GET_USERS_POSTS
+    GET_USERS_POSTS,
+    SET_USERS_POSTS
 } from "../actionTypes";
 import {Posts} from "../types";
 import { PostsInitialValues } from "../initialState";
@@ -22,12 +23,16 @@ export default (state: Posts = PostsInitialValues, { type, payload }: Actions): 
                 ...state,
             };
         case SET_POSTS:
-            console.log(payload)
             return {
                 ...state,
                 list: payload.list,
                 pages:payload.pages
             };
+        case SET_USERS_POSTS:
+        return {
+            ...state,
+            usersPosts: payload,
+        };
         case ADD_NEW_POST:
             return {
                 ...state,
@@ -45,16 +50,19 @@ export default (state: Posts = PostsInitialValues, { type, payload }: Actions): 
         case UPDATE_SELECTED_POST:
             return {
                 ...state,
-                list: state.list.map((product: any) =>{
-                   if (product.id == payload.id )
-                   product = payload
-                   return product
+                usersPosts: state.usersPosts.map((post: any) =>{
+                   if (post.id == payload.id ){
+                    post = payload
+                   }
+                   
+                   return post
                 } )
             };
         case DELETE_POST:
             return {
                 ...state,
-                list: state.list.filter((product: any) => product.id !== payload)
+                list: state.list.filter((post: any) => post.id !== payload),
+                usersPosts:state.usersPosts.filter((post: any) => post.id !== payload)
             };
         default:
             return state;

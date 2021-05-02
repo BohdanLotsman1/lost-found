@@ -33,6 +33,9 @@ const PostInfo = () => {
             <div className="back">
                <Link className="link" to="/">{'< Back'} </Link> 
             </div>
+            <div>
+                <span className='header'>{post.header}</span>
+            </div>
             <div className="postInfo">
                 <div className="img">
                     <img style = {{width:'100%',height:'100%'}}  className='img-post' placeholder={"img"} src={post.image?`${process.env.REACT_APP_API_HOST}/${post.image}`:''}/>                

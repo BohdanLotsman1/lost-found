@@ -3,20 +3,20 @@ import { Button, Input, Pagination, Select, Table } from 'antd'
 import { useDispatch, useSelector } from 'react-redux';
 import './style.scss';
 import moment from 'moment';
-import { fetchPostsSelector } from '../../../../../Posts/store/selectors';
-import { getUserSelector } from '../../../../store/selectors';
-import { deletePost, getUsersPosts } from '../../../../../Posts/store/actions';
-
-
-const { Option } = Select;
+import * as Yup from 'yup'
+import { usersPostsSelector } from '../../../../../Posts/store/selectors';
+import { deletePost, selectPost } from '../../../../../Posts/store/actions';
+import UpdateCustomerPosts from './UpdateCustomersPosts/UpdateCustomerPosts';
+import { PostValidationSchema } from '../../../../../pages/Advertisement/AdvertisementPage';
 
 const CustomerPostsList = ()=>{
 
   const dispatch = useDispatch();
-  const {list} = useSelector(fetchPostsSelector)
+  const list = useSelector(usersPostsSelector)
 
 
   const [searchValue, setSearchValue] = useState<string>('');
+  const [modalUpdateActive, setModalUpdateActive] = useState<boolean>(false);
 
   let filteredList = list;
 
@@ -26,6 +26,11 @@ const CustomerPostsList = ()=>{
 
     );
   }
+  const updateModalPost = (product: any) => {
+    dispatch(selectPost(product))
+    setModalUpdateActive(true);
+  };
+
   let columns = [
     {
       title: 'Header',
@@ -91,8 +96,14 @@ const CustomerPostsList = ()=>{
       className: 'table-column-5',
       render: (_: any, record:any) =>
       list.length >= 1 ? (
+        
           <div>
-            <Button type="primary" className="operation-btn" danger onClick={()=>dispatch(deletePost(record.id))} >Delete</Button>
+            <Button type="primary"  className="operation-btn update" onClick={() => updateModalPost(record)}>
+              Updete
+            </Button>
+            <Button type="primary" className="operation-btn" danger onClick={()=>dispatch(deletePost(record.id))}>
+            Delete
+            </Button>
           </div>
       ) : null,
       },
@@ -106,8 +117,15 @@ const CustomerPostsList = ()=>{
         columns={columns}
         rowKey='id'
       />
+        <UpdateCustomerPosts
+              modalUpdateActive={modalUpdateActive}
+              setModalUpdateActive={setModalUpdateActive}
+              PostValidationSchema={PostValidationSchema}
+          />
     </div>
+
   )
 }
 
 export default CustomerPostsList
+

@@ -1,6 +1,8 @@
 export interface Posts {
     list: any[]
     pages:number
+    usersPosts:any[]
+    userPostsPages:number
 }
 
 export interface GetPostsInStore {

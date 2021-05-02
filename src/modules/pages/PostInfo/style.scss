@@ -10,9 +10,15 @@
         }
     }
     .link{
-        color: brown;
+        color: rgb(0, 0, 0);
         font-size: xx-large;
         font-weight: bold;
+    }
+    .header{
+        color: rgb(0, 0, 0);
+        font-size: xx-large;
+        font-weight: bold;
+        margin-bottom: 20px;
     }
     padding: 20px;
     .descriptionblock{
@@ -30,6 +36,7 @@
     }
     .postInfo{
         display: flex;
+        justify-content: space-around;u
         .img{
             padding: 20px;
             text-align: center;

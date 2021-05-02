@@ -5,8 +5,6 @@ import {
     GET_USER_SUCCESS,
     GET_USER_ERROR,
     GET_USER_ERRORS_CLEAR,
-    SET_USERS_FRANCHISE,
-    GET_USERS_FRANCHISE,
     UPDATE_USER,
     UPDATE_USER_INFO,
     FETCH_ALL_USERS,
@@ -17,11 +15,6 @@ import {
 
 export const getUser = (): Actions => ({
     type: GET_USER,
-});
-
-export const setUsersFranchises = (payload: any): PayloadAction<string[]> => ({
-    type: SET_USERS_FRANCHISE,
-    payload
 });
 
 export const setUser = (payload: any): PayloadAction<string[]> => ({

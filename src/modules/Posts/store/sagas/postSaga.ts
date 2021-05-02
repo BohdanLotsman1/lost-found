@@ -1,7 +1,7 @@
 import {Actions} from "../../../../libs/utils/store/types";
 import {call, put} from 'redux-saga/effects';
 import {PostsService} from "../../services";
-import {addNewPost, setPosts, updateSelectedPosts} from "../actions";
+import {addNewPost, setPosts, setUsersPost, updateSelectedPosts} from "../actions";
 
 const postService = new PostsService()
 
@@ -12,7 +12,6 @@ export function* gettingPosts(payload:any) {
         }
         const {postData} = yield call(postService.getPosts,payload);
         if(postData){
-            console.log(postData)
             yield put(setPosts(postData));
         }
         
@@ -24,9 +23,24 @@ export function* gettingPosts(payload:any) {
 
 export function* gettingCustomerPosts({payload}: Actions) {
     try {
-        const {posts} = yield call(postService.getUsersPosts,payload);
-        if(posts)
-        yield put(setPosts(posts));
+        const {list} = yield call(postService.getUsersPosts,payload);
+        if(list){
+            yield put(setUsersPost(list));
+        }
+      
+
+    }catch(e){
+        console.log(e)
+    }
+}
+
+export function* searchingPosts({payload}: Actions) {
+    try {
+        const {list} = yield call(postService.searchPosts,payload);
+        if(list){
+            yield put(setPosts(list));
+        }
+       
 
     }catch(e){
         console.log(e)

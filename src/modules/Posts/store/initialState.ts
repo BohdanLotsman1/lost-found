@@ -2,7 +2,9 @@ import {Posts, SelectedPost, PostFormValues} from "./types";
 
 export const PostsInitialValues: Posts = {
     list: [],
-    pages:0,
+    pages:1,
+    usersPosts:[],
+    userPostsPages:1
 };
 
 export const selectedPostInitialValues: SelectedPost = {

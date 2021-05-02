@@ -21,7 +21,6 @@ export default (state: GetUserInStore = UserInitialValues, { type, payload }: Ac
                 role: payload.role ,
             };
         case UPDATE_USER:
-            console.log(payload)
             return {...state,
                 id: payload[0].id ,
                 email: payload[0].email ,

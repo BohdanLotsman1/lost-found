@@ -43,8 +43,7 @@ export function* logining({ payload }: Actions) {
 
 export function* logout({}: Actions) {
     try {
-        const {data} = yield call(authService.getLogout);
-        console.log('here')
+        yield call(authService.getLogout);
         authService.logout();
         yield put(logoutUserSuccess());
         window.location.href = `${authService.APP_URL}/login`;

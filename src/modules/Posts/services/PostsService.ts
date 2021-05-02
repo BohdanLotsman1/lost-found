@@ -17,16 +17,19 @@ export class PostsService extends BaseApiService {
     }
 
     getPosts = (payload:any): Promise<AxiosResponse> => {
-        console.log(payload.payload)
         return this.get(`${this.API_ROUTE}/post?page=${payload.payload}`);
+    };
+
+    searchPosts = (payload:any): Promise<AxiosResponse> => {
+        return this.get(`${this.API_ROUTE}/post/search?page=${payload.page}&search=${payload.search}`);
     };
 
     getUsersPosts = (id:string): Promise<AxiosResponse> => {
         return this.get(`${this.API_ROUTE}/post/user/${id}`);
     };
 
-    updatePost = (id:string, product:any): Promise<AxiosResponse> => {
-        return this.patch(`${this.API_ROUTE}/post/${id}`,product);
+    updatePost = (id:string, post:any): Promise<AxiosResponse> => {
+        return this.patch(`${this.API_ROUTE}/post/${id}`,post);
     };
 
     deletePost = (id:string): Promise<AxiosResponse> => {

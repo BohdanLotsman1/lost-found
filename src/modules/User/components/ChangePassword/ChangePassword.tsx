@@ -5,12 +5,15 @@ import * as Yup from 'yup';
 import { changePasswordInitialValues } from "../../store/initialState";
 import { getUserSelector } from "../../store/selectors";
 import { updateUserPassword } from "../../store/actions";
+import { required } from "../../../pages/Advertisement/AdvertisementPage";
+
+
 
 const ChangePassword = ({setModalPass}: any) => {
 
     const dispatch = useDispatch();
     const {id} = useSelector(getUserSelector);
-    const required = 'This field is required';
+
     
     const passValidationSchema = () => {
         return Yup.object({
@@ -36,7 +39,6 @@ const ChangePassword = ({setModalPass}: any) => {
             password_confirmation: values.password_confirmation
         }
 
-        console.log(data)
         dispatch(updateUserPassword(data))
         setModalPass(false)
     }

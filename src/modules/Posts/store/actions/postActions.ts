@@ -7,7 +7,10 @@ import {
     ADD_NEW_POST,
     SELECTED_POST,
     CLEAR_SELECTED_POST,
-    UPDATE_SELECTED_POST
+    UPDATE_SELECTED_POST,
+    SEARCH_POSTS,
+    SET_USERS_POSTS,
+    GET_USERS_POSTS
 } from "../actionTypes";
 import {Actions, PayloadAction} from "../../../../libs/utils/store/types";
 
@@ -17,10 +20,19 @@ export const getPosts = (payload:number): PayloadAction<any>  => ({
 });
 
 export const getUsersPosts = (payload:any): PayloadAction<any>  => ({
-    type: GET_POSTS,
+    type: GET_USERS_POSTS,
     payload
 });
 
+export const setUsersPost = (payload:number): PayloadAction<any>  => ({
+    type: SET_USERS_POSTS,
+    payload
+})
+
+export const searchPosts = (payload:any): PayloadAction<any>  => ({
+    type: SEARCH_POSTS,
+    payload
+});
 
 export const setPosts = (payload:any): PayloadAction<any>  => ({
     type: SET_POSTS,

@@ -64,7 +64,6 @@ export class AuthService extends BaseApiService{
 
 
     login = (data: object): Promise<AxiosResponse> => {
-        console.log("here")
         return this.post(`${this.API_ROUTE}/auth/login`, data);     
     };
 
